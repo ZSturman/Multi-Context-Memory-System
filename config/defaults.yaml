@@ -1,0 +1,103 @@
+modalities:
+  concrete:
+    - vision
+    - audio
+    - time_context
+    - emotion
+  stubs:
+    - proprio
+    - thought
+
+thresholds:
+  boundary_candidate: 0.42
+  boundary_start: 0.58
+  boundary_reset: 0.24
+  recall_trigger: 0.46
+  local_trace_match: 0.28
+  graph_spread_min: 0.20
+  gate_promote: 0.66
+  gate_weak: 0.46
+  gate_reconsolidate: 0.52
+  write_provisional: 0.42
+  write_durable: 0.68
+  resolved_progress: 0.70
+  resolved_uncertainty: 0.35
+  fading_drop: 0.12
+  event_close_salience: 0.22
+
+weights:
+  boundary:
+    change_magnitude: 0.24
+    novelty: 0.18
+    prediction_error: 0.18
+    temporal_discontinuity: 0.14
+    emotion_jump: 0.10
+    goal_interruption: 0.08
+    context_shift: 0.08
+  write:
+    novelty: 0.16
+    salience: 0.18
+    emotional_weight: 0.12
+    goal_relevance: 0.12
+    prediction_error: 0.12
+    uncertainty_peak: 0.10
+    uncertainty_reduction: 0.08
+    consequence: 0.06
+    rehearsal_thought: 0.06
+  recall:
+    cue_similarity: 0.32
+    uncertainty: 0.18
+    goal_relevance: 0.18
+    contextual_match: 0.16
+    modality_salience: 0.16
+  thought_gate:
+    cue_similarity: 0.18
+    contextual_fit: 0.20
+    goal_relevance: 0.14
+    explanatory_value: 0.18
+    predictive_value: 0.10
+    uncertainty_reduction: 0.08
+    novelty_contribution: 0.05
+    emotional_distortion_penalty: -0.12
+    intrusive_penalty: -0.10
+    already_integrated_penalty: -0.10
+    already_dismissed_penalty: -0.08
+
+modality_context:
+  novelty_weight_change: 0.55
+  novelty_weight_bus: 0.20
+  novelty_weight_hypothesis_shift: 0.25
+  salience_weight_change: 0.35
+  salience_weight_novelty: 0.25
+  salience_weight_goal: 0.15
+  salience_weight_arousal: 0.25
+  confidence_floor: 0.25
+  uncertainty_gain: 0.65
+
+recall:
+  max_local_candidates_per_cue: 6
+  max_selected_candidates: 5
+  graph_expand_limit: 4
+  inhibition_decay: 0.12
+  dismissal_decay: 0.10
+  saturation_decay: 0.08
+  reconsolidation_gain: 0.18
+  integration_suppression: 0.35
+
+working_memory:
+  max_items: 6
+  activation_decay: 0.10
+  fade:
+    sensory_residue: 0.24
+    context_residue: 0.18
+    emotional_residue: 0.14
+    causal_gist_residue: 0.09
+    action_implication_residue: 0.07
+
+runtime:
+  candidate_ticks: 2
+  quiet_ticks_to_close: 2
+  consolidation_interval_ticks: 8
+  reconsolidation_interval_ticks: 6
+  default_location: unknown
+  default_goal: monitor_environment

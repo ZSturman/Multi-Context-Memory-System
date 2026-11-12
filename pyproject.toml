@@ -1,0 +1,33 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "multi-context-memory-system"
+version = "0.1.0"
+description = "Simulation-first multi-context memory system MVP"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "PyYAML>=6.0",
+  "typer>=0.21",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=9.0",
+]
+gui = [
+  "streamlit>=1.35",
+  "plotly>=5.0",
+]
+
+[project.scripts]
+mcms = "multi_context_memory.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/multi_context_memory"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+addopts = "-q"
